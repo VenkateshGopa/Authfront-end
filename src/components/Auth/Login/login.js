@@ -22,8 +22,8 @@ const Login = () =>{
         else
         try{
         const {data} = await axios.post(`https://auth7799.herokuapp.com/login`, logindata);
-        his.push('/')
-        localStorage.setItem("loggedin" ,data.token)
+        await localStorage.setItem("loggedin" ,data.token)
+        his.push('/home')
         //console.log(localStorage.getItem('loggedin'))
         }
         catch(err){
