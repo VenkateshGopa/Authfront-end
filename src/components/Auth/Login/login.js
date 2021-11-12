@@ -24,7 +24,7 @@ const Login = () =>{
         const {data} = await axios.post(`https://auth7799.herokuapp.com/login`, logindata);
         localStorage.setItem("loggedin" ,data.token)
         console.log(localStorage.getItem('loggedin'))
-        his.push('/home')
+        his.replace('/home')
         }
         catch(err){
             setlogin("! Invalid Credentials failed to login");
