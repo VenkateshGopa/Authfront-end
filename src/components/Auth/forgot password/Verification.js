@@ -28,7 +28,7 @@ const Verification = () =>{
         event.preventDefault();
         if(verificationdata.password === verificationdata.password1){
         try{
-            const {data} = await axios.post(`https://auth7799.herokuapp.com/Newpassword`, {password:verificationdata.password, id:localStorage.getItem('id')});
+            const {data} = await axios.post(`https://auth7799.herokuapp.com/Newpassword`, {password:verificationdata.password, id:params.id});
             alert("Password changed successfully")
             his.push('/login');
             console.log(data)
