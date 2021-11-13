@@ -1,10 +1,11 @@
 import './App.css';
-
 import Login from './components/Auth/Login/login';
 import Register from './components/Auth/Register/Register';
 import Forgotassword from './components/Auth/forgot password/forgetpassword';
-import { Switch ,Route, Redirect } from 'react-router';
+import { Switch ,Route, Redirect } from 'react-router-dom';
 import Home from './components/data/home';
+import Privateroute from './components/Privateroute';
+import Publicroute from './components/Publicroute';
 function App() {
   return (
    <Switch>
@@ -12,18 +13,18 @@ function App() {
         {localStorage.getItem('loggedin') ? <Redirect to='/home'/> : <Redirect to='/login'/>}
       </Route>
       <Route path='/login'>
-        <Login/>
+        <Publicroute> <Login/> </Publicroute>
       </Route>
       <Route path='/Register'>
-        <Register/>
+      <Publicroute><Register/></Publicroute>
       </Route>
       <Route  path='/forgotpassword'>
         <Forgotassword/>
       </Route>
       <Route path='/home'>
-        {localStorage.getItem('loggedin') ?  <Home/> : <Redirect to='/login'/>}
+        <Privateroute><Home/></Privateroute>
       </Route>
-      <Route path='*' exact>
+      <Route path='*'>
         {localStorage.getItem('loggedin') ? <Redirect to='/home'/> : <Redirect to='/login'/>}
       </Route>
    </Switch>
