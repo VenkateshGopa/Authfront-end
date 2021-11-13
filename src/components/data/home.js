@@ -16,6 +16,8 @@ const Home = () => {
             setdata(text.data);
             }
             catch{
+                console.log("here")
+                localStorage.removeItem("loggedin");
                 his.push('/login')
             }
         }
@@ -23,26 +25,35 @@ const Home = () => {
     },[his]);
 
     const changehandler = ({ target: { value } }) =>{
-        setdata(prev =>({...prev , note:value}));
+        setdata(prev =>({...prev , note1:value}));
     }
 
-    const handler = async (event) =>{
-        // event.preventDefault();
+    const savedata = async () =>{
+        if(data.note !== data.note1){
         try{
-        await axios.post(`https://auth7799.herokuapp.com/note`,{email:data.email , note:data.note},{
+            await axios.post(`https://auth7799.herokuapp.com/note`,{email:data.email , note:data.note1},{
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('loggedin')}`
             }})
         }
         catch{
+            console.log("here")
             localStorage.removeItem("loggedin");
             his.push('/login');
-        }            
+        }
+      }    
+    }
+    const Logoutsave = async (event) =>{
+        savedata(); 
+    }
+    const handler = async (event) =>{
+        event.preventDefault();
+        savedata(); 
     }
 
   return (
     <>
-      <Nav onsave={handler}/>
+      <Nav onsave={Logoutsave}/>
       <div className={classes.home} >
         <p className={classes.welcome}>Welcome Back {data.firstname} {data.lastname} !!</p>
         <p className={classes.quote}>Start taking your notes</p>
