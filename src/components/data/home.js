@@ -29,7 +29,7 @@ const Home = () => {
 
     const savedata = async () =>{
         try{
-            await axios.post(`https://auth7799.herokuapp.com/note`,{email:data.email , note:data.note1},{
+            await axios.post(`https://auth7799.herokuapp.com/note`,{email:data.email , note:data.note},{
         headers: {
             'Authorization': `Bearer ${localStorage.getItem('loggedin')}`
             }})
