@@ -23,13 +23,11 @@ const Home = () => {
         }
         getdata();
     },[his]);
-
     const changehandler = ({ target: { value } }) =>{
-        setdata(prev =>({...prev , note1:value}));
+        setdata(prev =>({...prev , note:value}));
     }
 
     const savedata = async () =>{
-        if(data.note !== data.note1){
         try{
             await axios.post(`https://auth7799.herokuapp.com/note`,{email:data.email , note:data.note1},{
         headers: {
@@ -40,8 +38,7 @@ const Home = () => {
             console.log("here")
             localStorage.removeItem("loggedin");
             his.push('/login');
-        }
-      }    
+        }   
     }
     const Logoutsave = async (event) =>{
         savedata(); 
