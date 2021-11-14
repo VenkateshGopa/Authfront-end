@@ -9,6 +9,10 @@ const Verification = () =>{
     const [err , seterr] =useState(null);
     const params = useParams();
     const his = useHistory();
+    const OtpchangeHandler= ({ target: { name, value } }) =>{
+        setdata( prev =>({...prev ,  [name]:value}))
+        setstatus(null);
+    }
     const changeHandler= ({ target: { name, value } }) =>{
         setdata( prev =>({...prev ,  [name]:value}))
         seterr(null);
@@ -46,7 +50,7 @@ const Verification = () =>{
         <p className={classes.heading}> Change Password </p>
         <form onSubmit={submithandler}>
             <p className={classes.label}> OTP - One Time Password </p>
-            <input type='text' className='form-control mb-3' onChange={changeHandler} name='code' placeholder='otp'onBlur={verificationhandler}/>
+            <input type='text' className='form-control mb-3' onChange={OtpchangeHandler} name='code' placeholder='Otp'onBlur={verificationhandler}/>
             {status && <p className={classes[status.class]}>{status.message}</p>}
             <p className={classes.label}> New Password</p>
             <input type='password' className='form-control mb-3' onChange={changeHandler} name='password' placeholder='New password' autoComplete="new-password"/>
