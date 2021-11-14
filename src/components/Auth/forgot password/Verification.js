@@ -16,7 +16,6 @@ const Verification = () =>{
     const changeHandler= ({ target: { name, value } }) =>{
         setdata( prev =>({...prev ,  [name]:value}))
         seterr(null);
-        setstatus(null);
     }
     const verificationhandler = async (event) => {
         event.preventDefault();
