@@ -6,11 +6,11 @@ import Verification from "./Verification";
 import Layout from "../Layout";
 import classes from '../Rlf.module.css';
 const Forgotassword = () =>{
+    let date = Date.now()
     const his = useHistory();
     const match = useRouteMatch();
     const [forgotpassdata, setdata] = useState({});
     const [isinvalid , setisinvalid] = useState(false);
-    // const []
     const changeHandler= ({ target: { name, value } }) =>{
         setdata( prev =>({...prev ,  [name]:value}))
     }
@@ -18,6 +18,7 @@ const Forgotassword = () =>{
         event.preventDefault();
         try{
         const {data} = await axios.post(`https://auth7799.herokuapp.com/forgotPassword`, forgotpassdata);
+            console.log(date);
         alert('email with verification link and otp has been sent to your email address')
         his.push('/login');
         console.log(data);
