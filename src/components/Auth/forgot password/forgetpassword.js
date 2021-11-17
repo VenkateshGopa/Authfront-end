@@ -17,8 +17,7 @@ const Forgotassword = () =>{
     const submithandler = async (event) => {
         event.preventDefault();
         try{
-        const {data} = await axios.post(`https://auth7799.herokuapp.com/forgotPassword`, forgotpassdata);
-            console.log(date);
+        const {data} = await axios.post(`https://auth7799.herokuapp.com/forgotPassword`, {...forgotpassdata , time:date});
         alert('email with verification link and otp has been sent to your email address')
         his.push('/login');
         console.log(data);
