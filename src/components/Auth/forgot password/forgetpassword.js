@@ -13,6 +13,7 @@ const Forgotassword = () =>{
     const [isinvalid , setisinvalid] = useState(false);
     const changeHandler= ({ target: { name, value } }) =>{
         setdata( prev =>({...prev ,  [name]:value}))
+        setisinvalid(false);
     }
     const submithandler = async (event) => {
         event.preventDefault();
